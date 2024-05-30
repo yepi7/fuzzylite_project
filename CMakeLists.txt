@@ -8,7 +8,6 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
 )
-
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES thirdProj
@@ -18,7 +17,7 @@ catkin_package(
 
 include_directories(
 # include
-  ${catkin_INCLUDE_DIRS}
+  include ${catkin_INCLUDE_DIRS}
 )
 
 add_executable(thirdProj_node src/thirdProj_node.cpp src/CFuzzySpeedController.cpp)
@@ -26,6 +25,7 @@ add_executable(thirdProj_node src/thirdProj_node.cpp src/CFuzzySpeedController.c
 target_link_libraries(${PROJECT_NAME}_node
   ${catkin_LIBRARIES}
   fuzzylite
+  tinyxml2
 )
 install(TARGETS ${PROJECT_NAME}_node
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
